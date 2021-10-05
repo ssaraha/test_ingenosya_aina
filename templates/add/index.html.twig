@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AddController!{% endblock %}
+
+{% block body %}
+    {% for type, messages in app.flashes(['success', 'info', 'error', 'warning']) %}
+        {% for message in messages %}
+            <div class="alert alert-{{type}} alert-dismissible fade show text-center" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <h5 class="text-primary text-center">Veuillez choisir ...</h5>
+    <div class="row">
+        {{ form_start(select)}}
+
+        {{ form_end(select)}}
+    </div>
+    <div class="row" id="div-dirigeant">
+        {{ form_start(dirigeant)}}
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(dirigeant.nom)}}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(dirigeant.prenom)}}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(dirigeant.adresse_email)}}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(dirigeant.sexe)}}
+            </div>
+        </div>
+
+        <div class="row">
+            <button type="submit"class="btn btn-primary btn-block">Enregistrer</button>
+        </div>
+
+        {{ form_end(dirigeant)}}
+    </div>
+    <div class="row" id="div-societe">
+        {{ form_start(societe)}}
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_row(societe.nom)}}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(societe.description)}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_row(societe.codepostal)}}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(societe.ville)}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_row(societe.type)}}
+                </div>
+                
+            </div>
+            <div class="row">
+                <button type="submit"class="btn btn-primary btn-block">Enregistrer</button>
+            </div>
+        {{ form_end(societe)}}
+    </div>
+
+{% endblock %}
