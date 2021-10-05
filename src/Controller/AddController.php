@@ -48,7 +48,6 @@ class AddController extends AbstractController
         }
 
         if ( $form_societe->isSubmitted() && $form_societe->isValid() ) {
-            
             $this->addflash('success', 'Societe enregistrée avec success');
 
             $em->persist($societe);
